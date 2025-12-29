@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digitalclock
-Sat Dec 27 22:52:39 2025
+Sun Dec 28 21:01:34 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -48,7 +48,7 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sat Dec 27 22:52:39 2025           ;
+; Analysis & Synthesis Status     ; Successful - Sun Dec 28 21:01:34 2025           ;
 ; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                   ; digitalclock                                    ;
 ; Top-level Entity Name           ; top                                             ;
@@ -367,7 +367,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Sat Dec 27 22:52:31 2025
+    Info: Processing started: Sun Dec 28 21:01:25 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digitalclock -c digitalclock
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -377,6 +377,10 @@ Info (12021): Found 1 design units, including 1 entities, in source file sevense
     Info (12023): Found entity 1: sevenseg File: D:/projects/digitalclock/sevenseg.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file sevensegtb.sv
     Info (12023): Found entity 1: sevensegtb File: D:/projects/digitalclock/sevensegtb.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file digitalclock_fsm.sv
+    Info (12023): Found entity 1: digitalclock_fsm File: D:/projects/digitalclock/digitalclock_fsm.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file fsmtb.sv
+    Info (12023): Found entity 1: fsmtb File: D:/projects/digitalclock/fsmtb.sv Line: 1
 Info (12127): Elaborating entity "top" for the top level hierarchy
 Warning (10230): Verilog HDL assignment warning at digitalclock.sv(37): truncated value with size 32 to match size of target (6) File: D:/projects/digitalclock/digitalclock.sv Line: 37
 Warning (10230): Verilog HDL assignment warning at digitalclock.sv(40): truncated value with size 32 to match size of target (26) File: D:/projects/digitalclock/digitalclock.sv Line: 40
@@ -455,9 +459,9 @@ Info (21057): Implemented 172 device resources after synthesis - the final resou
     Info (21061): Implemented 117 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 44 warnings
     Info: Peak virtual memory: 4870 megabytes
-    Info: Processing ended: Sat Dec 27 22:52:39 2025
-    Info: Elapsed time: 00:00:08
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Processing ended: Sun Dec 28 21:01:34 2025
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:20
 
 
 +------------------------------------------+

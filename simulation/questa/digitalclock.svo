@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition"
 
-// DATE "12/27/2025 22:53:43"
+// DATE "12/28/2025 21:02:29"
 
 // 
 // Device: Altera 5CSEMA5F31C6 Package FBGA896
@@ -39,15 +39,15 @@ module top (
 	HEX3,
 	HEX4,
 	HEX5);
-input 	CLOCK_50;
-input 	[1:0] KEY;
-output 	[9:0] LEDR;
-output 	[6:0] HEX0;
-output 	[6:0] HEX1;
-output 	[6:0] HEX2;
-output 	[6:0] HEX3;
-output 	[6:0] HEX4;
-output 	[6:0] HEX5;
+input 	logic CLOCK_50 ;
+input 	logic [1:0] KEY ;
+output 	logic [9:0] LEDR ;
+output 	logic [6:0] HEX0 ;
+output 	logic [6:0] HEX1 ;
+output 	logic [6:0] HEX2 ;
+output 	logic [6:0] HEX3 ;
+output 	logic [6:0] HEX4 ;
+output 	logic [6:0] HEX5 ;
 
 // Design Ports Information
 // KEY[1]	=>  Location: PIN_AA15,	 I/O Standard: 2.5 V,	 Current Strength: Default
