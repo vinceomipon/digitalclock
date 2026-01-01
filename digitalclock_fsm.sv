@@ -2,8 +2,6 @@ module digitalclock_fsm(
 	input	 logic		clk,
 	input  logic		rst,
 	input	 logic		mode,
-	output logic set_hours,
-	output logic set_minutes,
 	output logic [1:0] state_enum);
 	
 	typedef enum logic [1:0] {S0, S1, S2} statetype;
@@ -40,16 +38,13 @@ module digitalclock_fsm(
 	// current-state logic
 	// active low reset
 	always_ff @(posedge clk) begin
-		if (~rst)
+		if (rst)
 			state <= S0;
 		else
 			state <= next_state;
 	end
 	
 	// Output logic
-	assign set_hours 		= (next_state == S1);
-	assign set_minutes 	= (next_state == S2);
-	
 	always_comb begin
 		case(state)
 			S0: state_enum = 2'b00;

@@ -1,0 +1,31 @@
+# Quartus generated directories
+db/
+incremental_db/
+output_files/
+simulation/
+
+# Quartus generated files
+*.rpt
+*.summary
+*.done
+*.jdi
+*.pin
+*.sof
+*.pof
+*.cdf
+*.bak
+*.tmp
+*.smsg
+*.qws
+
+# ModelSim / Questa simulation files
+*.wlf
+*.vsim
+transcript
+vsim.dbg
+*.jou
+*.log
+
+# Temporary or backup files
+*~
+*.swp

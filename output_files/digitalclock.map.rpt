@@ -1,5 +1,5 @@
 Analysis & Synthesis report for digitalclock
-Sun Dec 28 21:01:34 2025
+Wed Dec 31 13:58:19 2025
 Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 
 
@@ -13,15 +13,20 @@ Quartus Prime Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Registers Removed During Synthesis
+  8. State Machine - |top|digitalclock_fsm:fsm|state
   9. General Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
  11. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod0
  12. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
- 16. Analysis & Synthesis Suppressed Messages
+ 13. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1
+ 14. Parameter Settings for Inferred Entity Instance: lpm_divide:Div1
+ 15. Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2
+ 16. Parameter Settings for Inferred Entity Instance: lpm_divide:Div2
+ 17. Port Connectivity Checks: "clkdiv:cd1"
+ 18. Post-Synthesis Netlist Statistics for Top Partition
+ 19. Elapsed Time Per Partition
+ 20. Analysis & Synthesis Messages
+ 21. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -48,14 +53,14 @@ on the Quartus Prime software download page.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +---------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Sun Dec 28 21:01:34 2025           ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec 31 13:58:19 2025           ;
 ; Quartus Prime Version           ; 24.1std.0 Build 1077 03/04/2025 SC Lite Edition ;
 ; Revision Name                   ; digitalclock                                    ;
 ; Top-level Entity Name           ; top                                             ;
 ; Family                          ; Cyclone V                                       ;
 ; Logic utilization (in ALMs)     ; N/A                                             ;
-; Total registers                 ; 39                                              ;
-; Total pins                      ; 55                                              ;
+; Total registers                 ; 53                                              ;
+; Total pins                      ; 57                                              ;
 ; Total virtual pins              ; 0                                               ;
 ; Total block memory bits         ; 0                                               ;
 ; Total DSP Blocks                ; 0                                               ;
@@ -179,6 +184,10 @@ on the Quartus Prime software download page.
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------+---------+
 ; digitalclock.sv                  ; yes             ; User SystemVerilog HDL File  ; D:/projects/digitalclock/digitalclock.sv                                                 ;         ;
 ; sevenseg.sv                      ; yes             ; User SystemVerilog HDL File  ; D:/projects/digitalclock/sevenseg.sv                                                     ;         ;
+; digitalclock_fsm.sv              ; yes             ; User SystemVerilog HDL File  ; D:/projects/digitalclock/digitalclock_fsm.sv                                             ;         ;
+; clkdiv.sv                        ; yes             ; User SystemVerilog HDL File  ; D:/projects/digitalclock/clkdiv.sv                                                       ;         ;
+; thldr.sv                         ; yes             ; User SystemVerilog HDL File  ; D:/projects/digitalclock/thldr.sv                                                        ;         ;
+; pos_edge_det.sv                  ; yes             ; User SystemVerilog HDL File  ; D:/projects/digitalclock/pos_edge_det.sv                                                 ;         ;
 ; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/intelfpga_lite/24.1std/fpgacademy/quartus/libraries/megafunctions/lpm_divide.tdf      ;         ;
 ; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/intelfpga_lite/24.1std/fpgacademy/quartus/libraries/megafunctions/abs_divider.inc     ;         ;
 ; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/intelfpga_lite/24.1std/fpgacademy/quartus/libraries/megafunctions/sign_div_unsign.inc ;         ;
@@ -187,6 +196,10 @@ on the Quartus Prime software download page.
 ; db/sign_div_unsign_9kh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/projects/digitalclock/db/sign_div_unsign_9kh.tdf                                      ;         ;
 ; db/alt_u_div_ose.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/projects/digitalclock/db/alt_u_div_ose.tdf                                            ;         ;
 ; db/lpm_divide_3am.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/projects/digitalclock/db/lpm_divide_3am.tdf                                           ;         ;
+; db/lpm_divide_52m.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/projects/digitalclock/db/lpm_divide_52m.tdf                                           ;         ;
+; db/sign_div_unsign_8kh.tdf       ; yes             ; Auto-Generated Megafunction  ; D:/projects/digitalclock/db/sign_div_unsign_8kh.tdf                                      ;         ;
+; db/alt_u_div_mse.tdf             ; yes             ; Auto-Generated Megafunction  ; D:/projects/digitalclock/db/alt_u_div_mse.tdf                                            ;         ;
+; db/lpm_divide_2am.tdf            ; yes             ; Auto-Generated Megafunction  ; D:/projects/digitalclock/db/lpm_divide_2am.tdf                                           ;         ;
 +----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------------------------+---------+
 
 
@@ -195,25 +208,25 @@ on the Quartus Prime software download page.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 61             ;
+; Estimate of Logic utilization (ALMs needed) ; 144            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 117            ;
+; Combinational ALUT usage for logic          ; 270            ;
 ;     -- 7 input functions                    ; 0              ;
-;     -- 6 input functions                    ; 5              ;
-;     -- 5 input functions                    ; 8              ;
-;     -- 4 input functions                    ; 12             ;
-;     -- <=3 input functions                  ; 92             ;
+;     -- 6 input functions                    ; 17             ;
+;     -- 5 input functions                    ; 19             ;
+;     -- 4 input functions                    ; 34             ;
+;     -- <=3 input functions                  ; 200            ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 39             ;
+; Dedicated logic registers                   ; 53             ;
 ;                                             ;                ;
-; I/O pins                                    ; 55             ;
+; I/O pins                                    ; 57             ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 39             ;
-; Total fan-out                               ; 514            ;
-; Average fan-out                             ; 1.93           ;
+; Maximum fan-out                             ; 53             ;
+; Total fan-out                               ; 1038           ;
+; Average fan-out                             ; 2.38           ;
 +---------------------------------------------+----------------+
 
 
@@ -222,29 +235,57 @@ on the Quartus Prime software download page.
 +----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------+---------------------+--------------+
 ; Compilation Hierarchy Node             ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                  ; Entity Name         ; Library Name ;
 +----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------+---------------------+--------------+
-; |top                                   ; 117 (45)            ; 39 (39)                   ; 0                 ; 0          ; 55   ; 0            ; |top                                                                                                 ; top                 ; work         ;
+; |top                                   ; 270 (3)             ; 53 (3)                    ; 0                 ; 0          ; 57   ; 0            ; |top                                                                                                 ; top                 ; work         ;
+;    |clkdiv:cd1|                        ; 34 (34)             ; 27 (27)                   ; 0                 ; 0          ; 0    ; 0            ; |top|clkdiv:cd1                                                                                      ; clkdiv              ; work         ;
+;    |digitalclock_fsm:fsm|              ; 4 (4)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |top|digitalclock_fsm:fsm                                                                            ; digitalclock_fsm    ; work         ;
 ;    |lpm_divide:Div0|                   ; 27 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div0                                                                                 ; lpm_divide          ; work         ;
 ;       |lpm_divide_3am:auto_generated|  ; 27 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div0|lpm_divide_3am:auto_generated                                                   ; lpm_divide_3am      ; work         ;
 ;          |sign_div_unsign_9kh:divider| ; 27 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div0|lpm_divide_3am:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
 ;             |alt_u_div_ose:divider|    ; 27 (27)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div0|lpm_divide_3am:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider ; alt_u_div_ose       ; work         ;
+;    |lpm_divide:Div1|                   ; 27 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div1                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_3am:auto_generated|  ; 27 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div1|lpm_divide_3am:auto_generated                                                   ; lpm_divide_3am      ; work         ;
+;          |sign_div_unsign_9kh:divider| ; 27 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div1|lpm_divide_3am:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
+;             |alt_u_div_ose:divider|    ; 27 (27)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div1|lpm_divide_3am:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider ; alt_u_div_ose       ; work         ;
+;    |lpm_divide:Div2|                   ; 16 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div2                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_2am:auto_generated|  ; 16 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div2|lpm_divide_2am:auto_generated                                                   ; lpm_divide_2am      ; work         ;
+;          |sign_div_unsign_8kh:divider| ; 16 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div2|lpm_divide_2am:auto_generated|sign_div_unsign_8kh:divider                       ; sign_div_unsign_8kh ; work         ;
+;             |alt_u_div_mse:divider|    ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Div2|lpm_divide_2am:auto_generated|sign_div_unsign_8kh:divider|alt_u_div_mse:divider ; alt_u_div_mse       ; work         ;
 ;    |lpm_divide:Mod0|                   ; 31 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod0                                                                                 ; lpm_divide          ; work         ;
 ;       |lpm_divide_62m:auto_generated|  ; 31 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod0|lpm_divide_62m:auto_generated                                                   ; lpm_divide_62m      ; work         ;
 ;          |sign_div_unsign_9kh:divider| ; 31 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
 ;             |alt_u_div_ose:divider|    ; 31 (31)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod0|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider ; alt_u_div_ose       ; work         ;
+;    |lpm_divide:Mod1|                   ; 31 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod1                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_62m:auto_generated|  ; 31 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod1|lpm_divide_62m:auto_generated                                                   ; lpm_divide_62m      ; work         ;
+;          |sign_div_unsign_9kh:divider| ; 31 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod1|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider                       ; sign_div_unsign_9kh ; work         ;
+;             |alt_u_div_ose:divider|    ; 31 (31)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod1|lpm_divide_62m:auto_generated|sign_div_unsign_9kh:divider|alt_u_div_ose:divider ; alt_u_div_ose       ; work         ;
+;    |lpm_divide:Mod2|                   ; 20 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod2                                                                                 ; lpm_divide          ; work         ;
+;       |lpm_divide_52m:auto_generated|  ; 20 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod2|lpm_divide_52m:auto_generated                                                   ; lpm_divide_52m      ; work         ;
+;          |sign_div_unsign_8kh:divider| ; 20 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod2|lpm_divide_52m:auto_generated|sign_div_unsign_8kh:divider                       ; sign_div_unsign_8kh ; work         ;
+;             |alt_u_div_mse:divider|    ; 20 (20)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|lpm_divide:Mod2|lpm_divide_52m:auto_generated|sign_div_unsign_8kh:divider|alt_u_div_mse:divider ; alt_u_div_mse       ; work         ;
+;    |pos_edge_det:pedd|                 ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |top|pos_edge_det:pedd                                                                               ; pos_edge_det        ; work         ;
+;    |pos_edge_det:pedm|                 ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |top|pos_edge_det:pedm                                                                               ; pos_edge_det        ; work         ;
+;    |pos_edge_det:pedu|                 ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |top|pos_edge_det:pedu                                                                               ; pos_edge_det        ; work         ;
 ;    |sevenseg:sg0|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|sevenseg:sg0                                                                                    ; sevenseg            ; work         ;
 ;    |sevenseg:sg1|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|sevenseg:sg1                                                                                    ; sevenseg            ; work         ;
+;    |sevenseg:sg2|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|sevenseg:sg2                                                                                    ; sevenseg            ; work         ;
+;    |sevenseg:sg3|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|sevenseg:sg3                                                                                    ; sevenseg            ; work         ;
+;    |sevenseg:sg4|                      ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|sevenseg:sg4                                                                                    ; sevenseg            ; work         ;
+;    |sevenseg:sg5|                      ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |top|sevenseg:sg5                                                                                    ; sevenseg            ; work         ;
+;    |thldr:tr1|                         ; 38 (38)             ; 17 (17)                   ; 0                 ; 0          ; 0    ; 0            ; |top|thldr:tr1                                                                                       ; thldr               ; work         ;
 +----------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+--------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                             ;
-+---------------------------------------+----------------------------------------+
-; Register name                         ; Reason for Removal                     ;
-+---------------------------------------+----------------------------------------+
-; tens[3]                               ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 1 ;                                        ;
-+---------------------------------------+----------------------------------------+
+Encoding Type:  One-Hot
++-------------------------------------------------+
+; State Machine - |top|digitalclock_fsm:fsm|state ;
++----------+----------+----------+----------------+
+; Name     ; state.S0 ; state.S2 ; state.S1       ;
++----------+----------+----------+----------------+
+; state.S0 ; 0        ; 0        ; 0              ;
+; state.S1 ; 1        ; 0        ; 1              ;
+; state.S2 ; 1        ; 1        ; 0              ;
++----------+----------+----------+----------------+
 
 
 +------------------------------------------------------+
@@ -252,24 +293,27 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 39    ;
-; Number of registers using Synchronous Clear  ; 26    ;
+; Total registers                              ; 53    ;
+; Number of registers using Synchronous Clear  ; 32    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 10    ;
+; Number of registers using Clock Enable       ; 20    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                           ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 3:1                ; 26 bits   ; 52 LEs        ; 0 LEs                ; 52 LEs                 ; Yes        ; |top|counter[8]            ;
-; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |top|seconds[1]            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
+; 3:1                ; 26 bits   ; 52 LEs        ; 0 LEs                ; 52 LEs                 ; Yes        ; |top|clkdiv:cd1|counter[14]     ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |top|thldr:tr1|seconds[2]       ;
+; 7:1                ; 6 bits    ; 24 LEs        ; 12 LEs               ; 12 LEs                 ; Yes        ; |top|thldr:tr1|minutes[5]       ;
+; 7:1                ; 5 bits    ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |top|thldr:tr1|hours[4]         ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |top|digitalclock_fsm:fsm|state ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------+
 
 
 +------------------------------------------------------------------+
@@ -318,37 +362,140 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_62m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div1 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 6              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_3am ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Mod2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 5              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_52m ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: lpm_divide:Div2 ;
++------------------------+----------------+------------------------+
+; Parameter Name         ; Value          ; Type                   ;
++------------------------+----------------+------------------------+
+; LPM_WIDTHN             ; 5              ; Untyped                ;
+; LPM_WIDTHD             ; 4              ; Untyped                ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                ;
+; LPM_PIPELINE           ; 0              ; Untyped                ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
+; CBXI_PARAMETER         ; lpm_divide_2am ; Untyped                ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
++------------------------+----------------+------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "clkdiv:cd1"                                                                            ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; Port    ; Type   ; Severity ; Details                                                                             ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+; counter ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +-----------------------------------------------------+
 ; Post-Synthesis Netlist Statistics for Top Partition ;
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 39                          ;
-;     ENA               ; 10                          ;
+; arriav_ff             ; 53                          ;
+;     ENA               ; 14                          ;
+;     ENA SCLR          ; 6                           ;
 ;     SCLR              ; 26                          ;
-;     plain             ; 3                           ;
-; arriav_lcell_comb     ; 120                         ;
-;     arith             ; 54                          ;
-;         0 data inputs ; 8                           ;
-;         1 data inputs ; 30                          ;
-;         2 data inputs ; 4                           ;
-;         3 data inputs ; 10                          ;
-;         4 data inputs ; 2                           ;
-;     normal            ; 56                          ;
+;     plain             ; 7                           ;
+; arriav_lcell_comb     ; 277                         ;
+;     arith             ; 102                         ;
+;         0 data inputs ; 20                          ;
+;         1 data inputs ; 37                          ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 24                          ;
+;         4 data inputs ; 5                           ;
+;         5 data inputs ; 4                           ;
+;     normal            ; 145                         ;
 ;         0 data inputs ; 1                           ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 16                          ;
-;         3 data inputs ; 14                          ;
-;         4 data inputs ; 10                          ;
-;         5 data inputs ; 8                           ;
-;         6 data inputs ; 5                           ;
-;     shared            ; 10                          ;
-;         0 data inputs ; 2                           ;
-;         1 data inputs ; 8                           ;
-; boundary_port         ; 55                          ;
+;         1 data inputs ; 9                           ;
+;         2 data inputs ; 49                          ;
+;         3 data inputs ; 25                          ;
+;         4 data inputs ; 29                          ;
+;         5 data inputs ; 15                          ;
+;         6 data inputs ; 17                          ;
+;     shared            ; 30                          ;
+;         0 data inputs ; 6                           ;
+;         1 data inputs ; 24                          ;
+; boundary_port         ; 57                          ;
 ;                       ;                             ;
-; Max LUT depth         ; 6.10                        ;
-; Average LUT depth     ; 3.64                        ;
+; Max LUT depth         ; 8.10                        ;
+; Average LUT depth     ; 5.16                        ;
 +-----------------------+-----------------------------+
 
 
@@ -357,7 +504,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:00     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -367,7 +514,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
-    Info: Processing started: Sun Dec 28 21:01:25 2025
+    Info: Processing started: Wed Dec 31 13:58:09 2025
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off digitalclock -c digitalclock
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 6 of the 6 processors detected
@@ -381,21 +528,45 @@ Info (12021): Found 1 design units, including 1 entities, in source file digital
     Info (12023): Found entity 1: digitalclock_fsm File: D:/projects/digitalclock/digitalclock_fsm.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file fsmtb.sv
     Info (12023): Found entity 1: fsmtb File: D:/projects/digitalclock/fsmtb.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file clkdiv.sv
+    Info (12023): Found entity 1: clkdiv File: D:/projects/digitalclock/clkdiv.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file thldr.sv
+    Info (12023): Found entity 1: thldr File: D:/projects/digitalclock/thldr.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file pos_edge_det.sv
+    Info (12023): Found entity 1: pos_edge_det File: D:/projects/digitalclock/pos_edge_det.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file clkdiv_tb.sv
+    Info (12023): Found entity 1: clkdiv_tb File: D:/projects/digitalclock/clkdiv_tb.sv Line: 1
 Info (12127): Elaborating entity "top" for the top level hierarchy
-Warning (10230): Verilog HDL assignment warning at digitalclock.sv(37): truncated value with size 32 to match size of target (6) File: D:/projects/digitalclock/digitalclock.sv Line: 37
-Warning (10230): Verilog HDL assignment warning at digitalclock.sv(40): truncated value with size 32 to match size of target (26) File: D:/projects/digitalclock/digitalclock.sv Line: 40
-Warning (10230): Verilog HDL assignment warning at digitalclock.sv(43): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 43
-Warning (10230): Verilog HDL assignment warning at digitalclock.sv(44): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 44
-Warning (10034): Output port "HEX2" at digitalclock.sv(7) has no driver File: D:/projects/digitalclock/digitalclock.sv Line: 7
-Warning (10034): Output port "HEX3" at digitalclock.sv(8) has no driver File: D:/projects/digitalclock/digitalclock.sv Line: 8
-Warning (10034): Output port "HEX4" at digitalclock.sv(9) has no driver File: D:/projects/digitalclock/digitalclock.sv Line: 9
-Warning (10034): Output port "HEX5" at digitalclock.sv(11) has no driver File: D:/projects/digitalclock/digitalclock.sv Line: 11
-Info (12128): Elaborating entity "sevenseg" for hierarchy "sevenseg:sg0" File: D:/projects/digitalclock/digitalclock.sv Line: 54
-Info (278001): Inferred 2 megafunctions from design logic
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: D:/projects/digitalclock/digitalclock.sv Line: 44
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: D:/projects/digitalclock/digitalclock.sv Line: 43
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: D:/projects/digitalclock/digitalclock.sv Line: 44
-Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: D:/projects/digitalclock/digitalclock.sv Line: 44
+Warning (10036): Verilog HDL or VHDL warning at digitalclock.sv(14): object "counter" assigned a value but never read File: D:/projects/digitalclock/digitalclock.sv Line: 14
+Warning (10230): Verilog HDL assignment warning at digitalclock.sv(45): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 45
+Warning (10230): Verilog HDL assignment warning at digitalclock.sv(46): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 46
+Warning (10230): Verilog HDL assignment warning at digitalclock.sv(48): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 48
+Warning (10230): Verilog HDL assignment warning at digitalclock.sv(49): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 49
+Warning (10230): Verilog HDL assignment warning at digitalclock.sv(51): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 51
+Warning (10230): Verilog HDL assignment warning at digitalclock.sv(52): truncated value with size 32 to match size of target (4) File: D:/projects/digitalclock/digitalclock.sv Line: 52
+Warning (10034): Output port "LEDR[9..2]" at digitalclock.sv(4) has no driver File: D:/projects/digitalclock/digitalclock.sv Line: 4
+Info (12128): Elaborating entity "pos_edge_det" for hierarchy "pos_edge_det:pedm" File: D:/projects/digitalclock/digitalclock.sv Line: 32
+Info (12128): Elaborating entity "digitalclock_fsm" for hierarchy "digitalclock_fsm:fsm" File: D:/projects/digitalclock/digitalclock.sv Line: 36
+Info (12128): Elaborating entity "clkdiv" for hierarchy "clkdiv:cd1" File: D:/projects/digitalclock/digitalclock.sv Line: 38
+Warning (10230): Verilog HDL assignment warning at clkdiv.sv(20): truncated value with size 32 to match size of target (26) File: D:/projects/digitalclock/clkdiv.sv Line: 20
+Info (12128): Elaborating entity "thldr" for hierarchy "thldr:tr1" File: D:/projects/digitalclock/digitalclock.sv Line: 39
+Warning (10230): Verilog HDL assignment warning at thldr.sv(19): truncated value with size 32 to match size of target (5) File: D:/projects/digitalclock/thldr.sv Line: 19
+Warning (10230): Verilog HDL assignment warning at thldr.sv(21): truncated value with size 32 to match size of target (5) File: D:/projects/digitalclock/thldr.sv Line: 21
+Warning (10230): Verilog HDL assignment warning at thldr.sv(25): truncated value with size 32 to match size of target (6) File: D:/projects/digitalclock/thldr.sv Line: 25
+Warning (10230): Verilog HDL assignment warning at thldr.sv(27): truncated value with size 32 to match size of target (6) File: D:/projects/digitalclock/thldr.sv Line: 27
+Warning (10230): Verilog HDL assignment warning at thldr.sv(37): truncated value with size 32 to match size of target (5) File: D:/projects/digitalclock/thldr.sv Line: 37
+Warning (10230): Verilog HDL assignment warning at thldr.sv(40): truncated value with size 32 to match size of target (6) File: D:/projects/digitalclock/thldr.sv Line: 40
+Warning (10230): Verilog HDL assignment warning at thldr.sv(43): truncated value with size 32 to match size of target (6) File: D:/projects/digitalclock/thldr.sv Line: 43
+Info (12128): Elaborating entity "sevenseg" for hierarchy "sevenseg:sg0" File: D:/projects/digitalclock/digitalclock.sv Line: 64
+Info (278001): Inferred 6 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod0" File: D:/projects/digitalclock/digitalclock.sv Line: 45
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0" File: D:/projects/digitalclock/digitalclock.sv Line: 46
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod1" File: D:/projects/digitalclock/digitalclock.sv Line: 48
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div1" File: D:/projects/digitalclock/digitalclock.sv Line: 49
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Mod2" File: D:/projects/digitalclock/digitalclock.sv Line: 51
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div2" File: D:/projects/digitalclock/digitalclock.sv Line: 52
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod0" File: D:/projects/digitalclock/digitalclock.sv Line: 45
+Info (12133): Instantiated megafunction "lpm_divide:Mod0" with the following parameter: File: D:/projects/digitalclock/digitalclock.sv Line: 45
     Info (12134): Parameter "LPM_WIDTHN" = "6"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
@@ -406,62 +577,57 @@ Info (12021): Found 1 design units, including 1 entities, in source file db/sign
     Info (12023): Found entity 1: sign_div_unsign_9kh File: D:/projects/digitalclock/db/sign_div_unsign_9kh.tdf Line: 25
 Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_ose.tdf
     Info (12023): Found entity 1: alt_u_div_ose File: D:/projects/digitalclock/db/alt_u_div_ose.tdf Line: 23
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: D:/projects/digitalclock/digitalclock.sv Line: 43
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: D:/projects/digitalclock/digitalclock.sv Line: 43
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0" File: D:/projects/digitalclock/digitalclock.sv Line: 46
+Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter: File: D:/projects/digitalclock/digitalclock.sv Line: 46
     Info (12134): Parameter "LPM_WIDTHN" = "6"
     Info (12134): Parameter "LPM_WIDTHD" = "4"
     Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
     Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
 Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_3am.tdf
     Info (12023): Found entity 1: lpm_divide_3am File: D:/projects/digitalclock/db/lpm_divide_3am.tdf Line: 25
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Mod2" File: D:/projects/digitalclock/digitalclock.sv Line: 51
+Info (12133): Instantiated megafunction "lpm_divide:Mod2" with the following parameter: File: D:/projects/digitalclock/digitalclock.sv Line: 51
+    Info (12134): Parameter "LPM_WIDTHN" = "5"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_52m.tdf
+    Info (12023): Found entity 1: lpm_divide_52m File: D:/projects/digitalclock/db/lpm_divide_52m.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_8kh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_8kh File: D:/projects/digitalclock/db/sign_div_unsign_8kh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_mse.tdf
+    Info (12023): Found entity 1: alt_u_div_mse File: D:/projects/digitalclock/db/alt_u_div_mse.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "lpm_divide:Div2" File: D:/projects/digitalclock/digitalclock.sv Line: 52
+Info (12133): Instantiated megafunction "lpm_divide:Div2" with the following parameter: File: D:/projects/digitalclock/digitalclock.sv Line: 52
+    Info (12134): Parameter "LPM_WIDTHN" = "5"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_2am.tdf
+    Info (12023): Found entity 1: lpm_divide_2am File: D:/projects/digitalclock/db/lpm_divide_2am.tdf Line: 25
 Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
     Warning (13410): Pin "LEDR[6]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
     Warning (13410): Pin "LEDR[7]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
     Warning (13410): Pin "LEDR[8]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
     Warning (13410): Pin "LEDR[9]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 4
-    Warning (13410): Pin "HEX2[0]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 7
-    Warning (13410): Pin "HEX2[1]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 7
-    Warning (13410): Pin "HEX2[2]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 7
-    Warning (13410): Pin "HEX2[3]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 7
-    Warning (13410): Pin "HEX2[4]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 7
-    Warning (13410): Pin "HEX2[5]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 7
-    Warning (13410): Pin "HEX2[6]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 7
-    Warning (13410): Pin "HEX3[0]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 8
-    Warning (13410): Pin "HEX3[1]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 8
-    Warning (13410): Pin "HEX3[2]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 8
-    Warning (13410): Pin "HEX3[3]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 8
-    Warning (13410): Pin "HEX3[4]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 8
-    Warning (13410): Pin "HEX3[5]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 8
-    Warning (13410): Pin "HEX3[6]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 8
-    Warning (13410): Pin "HEX4[0]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 9
-    Warning (13410): Pin "HEX4[1]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 9
-    Warning (13410): Pin "HEX4[2]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 9
-    Warning (13410): Pin "HEX4[3]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 9
-    Warning (13410): Pin "HEX4[4]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 9
-    Warning (13410): Pin "HEX4[5]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 9
-    Warning (13410): Pin "HEX4[6]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 9
-    Warning (13410): Pin "HEX5[0]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 11
     Warning (13410): Pin "HEX5[1]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 11
-    Warning (13410): Pin "HEX5[2]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 11
-    Warning (13410): Pin "HEX5[3]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 11
-    Warning (13410): Pin "HEX5[4]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 11
-    Warning (13410): Pin "HEX5[5]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 11
-    Warning (13410): Pin "HEX5[6]" is stuck at GND File: D:/projects/digitalclock/digitalclock.sv Line: 11
 Info (286030): Timing-Driven Synthesis is running
 Info (144001): Generated suppressed messages file D:/projects/digitalclock/output_files/digitalclock.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 1 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "KEY[1]" File: D:/projects/digitalclock/digitalclock.sv Line: 3
-Info (21057): Implemented 172 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
+Info (21057): Implemented 331 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
     Info (21059): Implemented 52 output pins
-    Info (21061): Implemented 117 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 44 warnings
+    Info (21061): Implemented 274 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 27 warnings
     Info: Peak virtual memory: 4870 megabytes
-    Info: Processing ended: Sun Dec 28 21:01:34 2025
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:20
+    Info: Processing ended: Wed Dec 31 13:58:19 2025
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:19
 
 
 +------------------------------------------+

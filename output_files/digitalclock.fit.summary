@@ -1,13 +1,13 @@
-Fitter Status : Successful - Sun Dec 28 21:02:10 2025
+Fitter Status : Successful - Wed Dec 31 13:59:07 2025
 Quartus Prime Version : 24.1std.0 Build 1077 03/04/2025 SC Lite Edition
 Revision Name : digitalclock
 Top-level Entity Name : top
 Family : Cyclone V
 Device : 5CSEMA5F31C6
 Timing Models : Final
-Logic utilization (in ALMs) : 62 / 32,070 ( < 1 % )
-Total registers : 39
-Total pins : 55 / 457 ( 12 % )
+Logic utilization (in ALMs) : 145 / 32,070 ( < 1 % )
+Total registers : 53
+Total pins : 57 / 457 ( 12 % )
 Total virtual pins : 0
 Total block memory bits : 0 / 4,065,280 ( 0 % )
 Total RAM Blocks : 0 / 397 ( 0 % )
