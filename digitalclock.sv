@@ -12,20 +12,56 @@ module top (
 
 
     logic [25:0]	counter	= 0;
-    logic [5:0]	seconds	= 0; // Renamed for clarity
+    logic [5:0]	seconds	= 0;
 	 logic [5:0]	minutes	= 0;
 	 logic [4:0]	hours 	= 0;
 
     // Invert KEY[0] because buttons are usually active-low (0 when pressed)
 	 logic [1:0] state_enum;
-    logic reset, tick_sec, mode, mode_pressed, up, up_pressed, down, down_pressed;
+    logic reset, tick_sec;
+	 logic mode, mode_ff1, mode_ff2, mode_pressed;
+	 logic up, up_ff1, up_ff2, up_pressed;
+	 logic down, down_ff1, down_ff2, down_pressed;
     assign reset = ~KEY[0];
 	 
-	 // Sample input on rising clk edge to handle metastability and synchronization
+	 
+	 // Two stage synchronizer
+	 // Stage 1: Capture asynchronous input
+	 // Stage 2: Provide a full cycle for stability
 	 always_ff @(posedge CLOCK_50) begin
-		mode <= ~KEY[1];
-		up <= ~KEY[3];
-		down <= ~KEY[2];
+		if (reset) begin
+			mode_ff1 <= 1'b0;
+			mode_ff2 <= 1'b0;
+		end else begin
+			mode_ff1 <= ~KEY[1];
+			mode_ff2 <= mode_ff1;
+		end
+	 end
+	 
+	 always_ff @(posedge CLOCK_50) begin
+		if (reset) begin
+			up_ff1 <= 1'b0;
+			up_ff2 <= 1'b0;
+		end else begin
+			up_ff1 <= ~KEY[3];
+			up_ff2 <= up_ff1;
+		end
+	 end
+	 
+	 always_ff @(posedge CLOCK_50) begin
+		if (reset) begin
+			down_ff1 <= 1'b0;
+			down_ff2 <= 1'b0;
+		end else begin
+			down_ff1 <= ~KEY[2];
+			down_ff2 <= down_ff1;
+		end
+	 end
+	 
+	 always_comb begin
+		mode = mode_ff2;
+		up = up_ff2;
+		down = down_ff2;
 	 end
 	 
 	 // generates single cycle pulse to prevent state transition racing
