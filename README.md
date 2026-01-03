@@ -27,24 +27,15 @@ When testing my implementation on the board, I noticed that my states were not t
 * Metastability can occur since the button can be updated close to a clock edge
 * The FSM races thorugh its states due to button bounce
 
-To handle these issues 
+To handle these issues the inputs were put into a two stage synchronizer to ensure that the fsm and time handler module receive reliable signals. In addition, A positive edge detector was used to send a single pulse instead of a continuous pulse to prevent racing between states in the fsm.
 
-Here's where you can go to town on how you actually built this thing. Write as much as you can here, it's totally fine if it's not too much just make sure you write *something*. If you don't have too much experience on your resume working on the front end that's totally fine. This is where you can really show off your passion and make up for that ten fold.
+Lastly, the seconds, minutes and hours were all displayed on each seven segment display using a decoder module and produces decimal values 1-9.
 
-## Optimizations
-*(optional)*
-
-You don't have to include this section but interviewers *love* that you can not only deliver a final product that looks great but also functions efficiently. Did you write something then refactor it later and the result was 5x faster than the original implementation? Did you cache your assets? Things that you write in this section are **GREAT** to bring up in interviews and you can use this section as reference when studying for technical interviews!
+## Future Improvements
+* Time will only tick forward if the user sets the hours and minutes
+* Swap between 24 hour format and 12 hour format
+* Implement an alarm logic when the time reaches the user's set time
 
 ## Lessons Learned:
 
-No matter what your experience level, being an engineer means continuously learning. Every time you build something you always have those *whoa this is awesome* or *wow I actually did it!* moments. This is where you should share those moments! Recruiters and interviewers love to see that you're self-aware and passionate about growing.
-
-## Examples:
-Take a look at these couple examples that I have in my own portfolio:
-
-**Palettable:** https://github.com/alecortega/palettable
-
-**Twitter Battle:** https://github.com/alecortega/twitter-battle
-
-**Patch Panel:** https://github.com/alecortega/patch-panel
+This project reinforced my learning of writing SystemVerilog code as well as use concepts learned in my computing system course into a practical project. I was able to practice designing an fsm and implementing it, using two stage synchronizers, flip flops, counters and so much more! This project also gave me the chance to practice my hardware validation skills by writing simple testbenches which I hope to write more in the future!
