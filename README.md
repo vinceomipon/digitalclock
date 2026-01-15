@@ -1,7 +1,6 @@
 # DE1-SoC Digital Clock
 This projects focuses on building a 24-hour format digital clock using the DE1-SoC board while writing HDL.
 
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
 
 
 ## How It's Made:
